@@ -1,6 +1,6 @@
 
 
-const Navbar = () => {
+const Navbar = (setCategory) => {
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
   <div className="container-fluid">
@@ -11,21 +11,36 @@ const Navbar = () => {
     <div className="collapse navbar-collapse" id="navbarNav">
       <ul className="navbar-nav">
         <li className="nav-item">
-          <a className="nav-link active" aria-current="page" href="#">Home</a>
+          <div className="nav-link" onClick={()=>setCategory("technology")}>Technology</div>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">Features</a>
+          <div className="nav-link" onClick={()=>setCategory("business")}>Business</div>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">Pricing</a>
+          <div className="nav-link" onClick={()=>setCategory("health")}>Health</div>
         </li>
         <li className="nav-item">
-          <a className="nav-link disabled" aria-disabled="true">Disabled</a>
+          <div className="nav-link" onClick={()=>setCategory("sports")}>Sports</div>
         </li>
+        <li className="nav-item">
+          <div className="nav-link" onClick={()=>setCategory("entertaiment")}>Entertainment</div>
+        </li>
+        <li className="nav-item">
+          <div className="nav-link" onClick={()=>setCategory("sign up")}>Sign Up</div>
+        </li>
+        <li className="nav-item">
+          <div className="nav-link" onClick={()=>setCategory("register")}>Register</div>
+        </li>
+        <li className="nav-item">
+        <button className="btn btn-outline-light" onClick={(setCategory)} type="submit">Search</button>
+        </li>   
+             
       </ul>
+      
     </div>
   </div>
 </nav>
+
 
   )
 }
