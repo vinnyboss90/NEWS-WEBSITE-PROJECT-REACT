@@ -1,6 +1,6 @@
 
 
-const Navbar = (setCategory) => {
+const Navbar = ({setCategory}) => {
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
   <div className="container-fluid">
