@@ -28,9 +28,7 @@ const Navbar = ({setCategory}) => {
         <li className="nav-item">
           <div className="nav-link" onClick={()=>setCategory("sign up")}>Sign Up</div>
         </li>
-        <li className="nav-item">
-          <div className="nav-link" onClick={()=>setCategory("register")}>Register</div>
-        </li>
+       
         <li className="nav-item">
         <button className="btn btn-outline-light" onClick={(setCategory)} type="submit">Search</button>
         </li>   

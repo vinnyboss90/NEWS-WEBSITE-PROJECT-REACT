@@ -1,35 +1,68 @@
-import {Card, Button, Form } from 'react-bootstrap'
+import { useState } from "react";
+import {createUserWithEmailAndPassword} from "firebase/auth";
+import { auth } from "../firebase";
 
-const Signup = () => {
+function Signup() {
+  const [registerEmail, setRegisterEmail] = useState("");
+  const [registerPassword, setRegisterPassword] = useState("");
+  
+ 
+  const register = async () => {
+    
+    try {
+      const user = await createUserWithEmailAndPassword(
+        auth,
+        registerEmail,
+        registerPassword
+      );
+      console.log(user);
+    } catch (error) {
+      console.log(error.message);
+    }
+
+    setRegisterEmail("")
+    setRegisterPassword("")
+  };
+
+  
+
+  
+
   return (
-   <Card className='m-5 p-5'>
-    <Form>
-        <h2>Create an Acount</h2>
-        <Form.Group>
-            <Form.Label>Your Name</Form.Label>
-            <Form.Control type="text"/>
-        </Form.Group>
-        <Form.Group>
-            <Form.Label>Email</Form.Label>
-            <Form.COntrol type="email"/>
-        </Form.Group>
-        <Form.Group>
-            <Form.Label>Password</Form.Label>
-            <Form.Control type="Password"/>
-        </Form.Group>
-        <Form.Group>
-             <Form.Label>Repeat Password</Form.Label>
-             <Form.Control type="password"/>
-            </Form.Group>
-            <Form.Group>
-             <Form.Check type="checkbox" Label= "I agree to all statements in Terms of service"/>
+    <div className="App">
+      <div>
 
-        </Form.Group>
-        <Button varient="primary" type="submit">Sign Up</Button>
-        <p>Already Have an Account? <a href="#">Login here</a></p>
-    </Form>
-   </Card>
-  )
+    
+    <h3> Sign Up </h3>
+        
+        <input
+          placeholder="Enter Email"
+          onChange={(event) => {
+            setRegisterEmail(event.target.value);
+          }}
+        />
+        <input
+          placeholder="Enter Password"
+          onChange={(event) => {
+            setRegisterPassword(event.target.value);
+          }}
+        />
+
+        <button onClick={register}> Sign Up </button>
+
+   
+        
+      </div>
+
+      <div>
+    
+        
+
+      </div>
+
+     
+    </div>
+  );
 }
 
 export default Signup
