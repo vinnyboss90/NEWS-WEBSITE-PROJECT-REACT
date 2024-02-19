@@ -12,6 +12,7 @@ const App = () => {
       <Navbar setCategory={setCategory}/>
       <NewsBoard category={category}/>
       <Signup/>
+      <Search/>
      
     </div>
   )

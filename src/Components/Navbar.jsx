@@ -1,4 +1,5 @@
-
+import Signup from './Signup'
+import Search from './Search'
 
 const Navbar = ({setCategory}) => {
   return (

@@ -13,11 +13,11 @@ function Search({ setSearchTerm }) {
       <input
         type="text"
         id="search"
-        placeholder="search free stuff"
+        placeholder="Search News"
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
       />
-      <button type="submit">🔍</button>
+      <button type onClick="submit">🔍</button>
     </form>
   );
 }
