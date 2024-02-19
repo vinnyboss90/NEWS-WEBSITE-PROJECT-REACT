@@ -1,32 +1,43 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-function Search({ setSearchTerm }) {
-  const [inputValue, setInputValue] = useState("");
+const Search = () => {
+  const [query, setQuery] = useState('');
+  const [articles, setArticles] = useState([]);
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    setSearchTerm(inputValue);
-  }
+  const handleInputChange = (event) => {
+    setQuery(event.target.value);
+  };
+
+  const handleSearch = async () => {
+    try {
+      const response = await fetch(`https://newsapi.org/v2/everything?q=${query}&apiKey=Y${import.meta.env.VITE_API_KEY}`);
+      const data = await response.json();
+      setArticles(data.articles);
+    } catch (error) {
+      console.error('Error fetching news:', error);
+    }
+  };
 
   return (
-    <form className="searchbar" onSubmit={handleSubmit}>
+    <div>
       <input
         type="text"
-        id="search"
-        placeholder="Search News"
-        value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
+        value={query}
+        onChange={handleInputChange}
+        placeholder="Enter keywords..."
       />
-      <button type onClick="submit">🔍</button>
-    </form>
+      <button onClick={handleSearch}>Search</button>
+      <ul>
+        {articles.map((article, index) => (
+          <li key={index}>
+            <a href={article.url} target="_blank" rel="noopener noreferrer">
+              {article.title}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
-}
+};
 
 export default Search;
-
-
-
-
-
-
-
